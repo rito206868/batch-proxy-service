@@ -16,7 +16,7 @@ public class CamelServiceRoute extends RouteBuilder{
 	public void configure() throws Exception {
 		System.out.println("Inside configure method");
 		CamelContext camelContext = getContext();
-		camelContext.addComponent("activemq", ActiveMQComponent.activeMQComponent("tcp://127.0.0.1:61616"));
+		camelContext.addComponent("activemq", ActiveMQComponent.activeMQComponent("tcp://10.1.5.45:61616"));
 		
 		from("timer:foo?fixedRate=true&period=5000&delay=3000")
 		.to("restlet:http://microservice-goep-demo.apps.dev.openshift.opentlc.com/employees?restletMethod=get")
